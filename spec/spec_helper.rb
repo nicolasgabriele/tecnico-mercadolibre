@@ -6,8 +6,6 @@ Selenium::WebDriver.logger.level = :debug
 Selenium::WebDriver.logger.output = 'selenium.log'
 
 Capybara.register_driver :selenium do |app|
-  # Chromedriver args are for logging, chrome args are for that too, starting it maximized 
-  # and disabling a warning when it's run by the root user (this may happen in jenkins)
   Capybara::Selenium::Driver.new(app, browser: :chrome, "args": [ "start-maximized", "--enable-logging", "--v=1", "--no-sandbox"], driver_opts: {log_path: "chromedriver.log", verbose: true})
 end
 
